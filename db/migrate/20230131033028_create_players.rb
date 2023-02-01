@@ -4,7 +4,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :jersey_number
       t.boolean :retired
-
+      
       t.timestamps 
     end
   end
