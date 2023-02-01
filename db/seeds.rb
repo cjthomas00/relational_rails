@@ -20,3 +20,5 @@ player5 = Player.create!(name: "Stan Mikita", jersey_number: 21, retired: true, 
 player6 = team3.players.create!(name: "Gordie Howe", jersey_number: 9, retired: true)
 player7 = team3.players.create!(name: "Steve Yzerman", jersey_number: 19, retired: true)
 player8 = team4.players.create!(name: "Joe Sakic", jersey_number: 19, retired: true)
+
+# rails db:{drop,create,migrate,seed}
