@@ -26,6 +26,15 @@ RSpec.describe 'the teams index page', type: :feature do
         expect(@team_1.name).to_not appear_before(@team_2.name)
         expect(@team_2.name).to_not appear_before(@team_3.name)
       end
+
+      it 'shows when the team was created' do
+
+        visit '/teams'
+        
+        expect(page).to have_content(@team_1.created_at)
+        expect(page).to have_content(@team_2.created_at)
+        expect(page).to have_content(@team_3.created_at)
+      end
     end
   end
 end
