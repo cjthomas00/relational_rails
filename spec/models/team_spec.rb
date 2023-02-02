@@ -12,7 +12,6 @@ RSpec.describe Team, type: :model do
         @team_2 = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
         sleep(2)
         @team_3 = Team.create!({name: 'Wild', city: 'Minnesota', original_six_team: false, number_of_stanley_cups: 0})
-        #@teams = [@team_1, @team_2, @team_3]
       end
       it 'can order teams by most recently created' do
         expect(Team.order_teams).to eq([@team_3, @team_2, @team_1])
