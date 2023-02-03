@@ -11,14 +11,13 @@ RSpec.describe 'the teams show page', type: :feature do
         visit "/teams/#{team.id}"
       
         expect(page).to have_content(team.name)
+        expect(page).to have_content(team.city)
         expect(page).to_not have_content(team_2)
       end
 
       it 'I see a count of the number of children associated with this parent' do
           team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
-          sleep(1)
           team_2 = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
-          sleep(1)
           team_3 = Team.create!({name: 'Wild', city: 'Minnesota', original_six_team: false, number_of_stanley_cups: 0})
           player1 = Player.create!(name: "Nathan MacKinnon", jersey_number: 29, retired: false, team: team_2)
           player2 = Player.create!(name: "Joe Sakic", jersey_number: 19, retired: true, team: team_2)
@@ -26,6 +25,9 @@ RSpec.describe 'the teams show page', type: :feature do
           player4 = Player.create!(name: "Bobby Orr", jersey_number: 4, retired: true, team: team_1)
 
           visit "/teams/#{team_1.id}"
+          
+          expect(page).to have_content(team_1.player_count)
+          expect(page).to_not have_content(team_2)
       end
     end
   end
