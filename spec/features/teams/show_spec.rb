@@ -29,6 +29,11 @@ RSpec.describe 'the teams show page', type: :feature do
           expect(page).to have_content(team_1.player_count)
           expect(page).to_not have_content(team_2)
       end
+
+      it 'Then I see a link to take me to that parents `child_table_name` page' do
+        visit "/teams/#{team_1.id}/players"
+        expect(page).to have_link('Players', href: "/teams/#{team_1.id}/players")
+      end
     end
   end
 end
