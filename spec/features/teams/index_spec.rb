@@ -50,7 +50,6 @@ RSpec.describe 'the teams index page', type: :feature do
 
         click_link("New Team")
         expect(current_path).to eq('/teams/new')
-        
       end
 
       it "When I fill out the form with a new parent's attributes:
@@ -61,8 +60,8 @@ RSpec.describe 'the teams index page', type: :feature do
         visit '/teams/new'
         fill_in('Name', with: 'Golden Knights') 
         fill_in('City', with: 'Las Vegas')
-        fill_in('Original_Six_Team', with: false)
-        fill_in('Stanley_Cups', with: 0)
+        uncheck('original_six_team')
+        fill_in('number_of_stanley_cups', with: 0)
         click_button('Create Team')
 
         new_team_id = Team.last.id
@@ -76,8 +75,8 @@ RSpec.describe 'the teams index page', type: :feature do
         visit '/teams/new'
         fill_in('Name', with: 'Golden Knights') 
         fill_in('City', with: 'Las Vegas')
-        fill_in('Original_Six_Team', with: false)
-        fill_in('Stanley_Cups', with: 0)
+        uncheck('original_six_team')
+        fill_in('number_of_stanley_cups', with: 0)
         click_button('Create Team')
 
         visit '/teams'

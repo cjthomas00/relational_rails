@@ -35,6 +35,30 @@ RSpec.describe 'the teams show page', type: :feature do
         click_link('Players')
         expect(current_path).to eq("/teams/#{@team_1.id}/players")
       end
+
+      it 'Then I see a link to update the parent "Update Parent"' do
+        visit "/teams/#{@team_1.id}"
+
+        expect(page).to have_link('Update Team', href: "/teams/#{@team_1.id}/edit")
+      end
+
+      it 'When I click the link "Update Parent"
+      Then I am taken to "/parents/:id/edit" where I  see a form to edit the parents attributes:' do
+        visit "/teams/#{@team_1.id}"
+        click_link("Update Team")
+        expect(current_path).to eq("/teams/#{@team_1.id}/edit")
+
+        fill_in('Name', with: 'Bruins') 
+        fill_in('City', with: 'Boston')
+        check('original_six_team')
+        fill_in('number_of_stanley_cups', with: 7)
+        click_button('Update Team')
+
+        expect(current_path).to eq("/teams/#{@team_1.id}")
+        expect(page).to have_content("Stanley Cups: 7")
+        expect(page).to have_content(@team_1.name)
+        expect(page).to have_content(@team_1.city)
+      end
     end
   end
 end

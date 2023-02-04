@@ -11,8 +11,25 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.create(name: params[:name], city: params[:city], original_six_team: params[:Original_Six_Team], number_of_stanley_cups: params[:Stanley_Cups])
+    team = Team.create!(team_params)
 
     redirect_to "/teams/#{team.id}"
+  end
+
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    team = Team.find(params[:id])
+    team.update(team_params)
+    team.save
+    redirect_to "/teams/#{team.id}"
+  end
+
+
+private
+  def team_params
+    params.permit(:name, :city, :original_six_team, :number_of_stanley_cups)
   end
 end
