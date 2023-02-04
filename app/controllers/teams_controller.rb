@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   def create
     team = Team.create!(team_params)
 
-    redirect_to "/teams/#{team.id}"
+    redirect_to "/teams"
   end
 
   def edit
