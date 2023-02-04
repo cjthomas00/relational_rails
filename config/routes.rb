@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/', to: 'welcome#index'
   get '/teams', to: 'teams#index'
   get '/teams/new', to: 'teams#new' # <=== location of these matters, put /parent/new above /parent/:id 
   post '/teams', to: 'teams#create'
