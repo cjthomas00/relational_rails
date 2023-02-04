@@ -6,7 +6,7 @@ RSpec.describe 'the teams index page', type: :feature do
       @team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
       sleep(1)
       @team_2 = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
-      sleep(1)
+      # sleep(1)
       @team_3 = Team.create!({name: 'Wild', city: 'Minnesota', original_six_team: false, number_of_stanley_cups: 0})
     end
     describe "when I visit '/teams'" do
@@ -34,6 +34,29 @@ RSpec.describe 'the teams index page', type: :feature do
         expect(page).to have_content(@team_1.created_at)
         expect(page).to have_content(@team_2.created_at)
         expect(page).to have_content(@team_3.created_at)
+      end
+
+      it 'Then I see a link to create a new Parent record, "New Parent"' do
+
+        visit '/teams'
+
+        expect(page).to have_link('New Team', href:"/teams/#{@team_1.id}/players")
+      end
+
+      it 'When I click this link
+      Then I am taken to "/parents/new" where I  see a form for a new parent record' do
+
+      end
+
+      it "When I fill out the form with a new parent's attributes:
+      And I click the button 'Create Parent' to submit the form
+      Then a `POST` request is sent to the '/parents' route" do
+
+      end
+
+      it "a new parent record is created,
+      and I am redirected to the Parent Index page where I see the new Parent displayed." do
+        
       end
     end
   end
