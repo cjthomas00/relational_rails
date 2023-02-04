@@ -4,3 +4,5 @@
   <p>Jersey Number: <%= player.jersey_number %><p>
   <p>Retired?: <%= player.retired %><p>
 <% end %> 
+
+<%= link_to "Create Player", "/teams/#{@team.id}/players/new" %>
