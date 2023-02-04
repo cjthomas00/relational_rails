@@ -4,3 +4,4 @@
 <p>Stanley Cups: <%= @team.number_of_stanley_cups %><p> 
 <p><%= link_to "Players", "/teams/#{@team.id}/players" %>
 : <%= @team.player_count %><p>
+<p><%= link_to "Update Team", "/teams/#{@team.id}/edit" %><p> 
