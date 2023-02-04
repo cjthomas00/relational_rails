@@ -37,7 +37,6 @@ RSpec.describe 'the teams index page', type: :feature do
       end
 
       it 'Then I see a link to create a new Parent record, "New Parent"' do
-
         visit '/teams'
 
         expect(page).to have_link('New Team', href:"/teams/new")
@@ -45,18 +44,15 @@ RSpec.describe 'the teams index page', type: :feature do
 
       it 'When I click this link
       Then I am taken to "/parents/new" where I  see a form for a new parent record' do
-
         visit '/teams'
-
         click_link("New Team")
+
         expect(current_path).to eq('/teams/new')
       end
 
       it "When I fill out the form with a new parent's attributes:
       And I click the button 'Create Parent' to submit the form
       Then a `POST` request is sent to the '/parents' route" do
-        
-
         visit '/teams/new'
         fill_in('Name', with: 'Golden Knights') 
         fill_in('City', with: 'Las Vegas')
@@ -65,7 +61,7 @@ RSpec.describe 'the teams index page', type: :feature do
         click_button('Create Team')
 
         new_team_id = Team.last.id
-        expect(current_path).to eq("/teams/#{new_team_id}")
+        expect(current_path).to eq("/teams")
         expect(page).to have_content("Golden Knights")
       end
 
@@ -79,7 +75,6 @@ RSpec.describe 'the teams index page', type: :feature do
         fill_in('number_of_stanley_cups', with: 0)
         click_button('Create Team')
 
-        visit '/teams'
         expect(page).to have_content("Golden Knights")
       end
     end
