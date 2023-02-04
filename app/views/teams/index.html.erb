@@ -1,6 +1,6 @@
-<%= link_to "New Team", "/teams/new" %>  
 <h1>Teams</h1>
 <% @teams.order_teams.each do |team| %>
   <h3><%= team.name %></h3>
   <p>Created At: <%= ' ' + team.created_at.to_s %></p>
-<% end %> 
+  <% end %> 
+  <%= link_to "New Team", "/teams/new" %>  
