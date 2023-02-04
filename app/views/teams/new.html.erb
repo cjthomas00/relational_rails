@@ -1,0 +1,12 @@
+<%= form_with url: '/teams', method: :post, local: true do |form| %>
+<%= form.label :name %>
+<%= form.text_field :name %>
+<%= form.label :city %>
+<%= form.text_field :city %>
+<%= form.label :Original_Six_Team%>
+<%= form.text_field :Original_Six_Team %>
+<%= form.label :Stanley_Cups%>
+<%= form.text_field :Stanley_Cups %>
+
+<%= form.submit "Create Team" %>
+<% end %>
