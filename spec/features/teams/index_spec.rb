@@ -18,7 +18,6 @@ RSpec.describe 'the teams index page', type: :feature do
       end
 
       it 'I see that records are ordered by most recently created first' do
-        
         visit '/teams'
        
         expect(@team_2.name).to appear_before(@team_1.name)
@@ -28,7 +27,6 @@ RSpec.describe 'the teams index page', type: :feature do
       end
 
       it 'shows when the team was created' do
-
         visit '/teams'
         
         expect(page).to have_content(@team_1.created_at)
