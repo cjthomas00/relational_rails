@@ -9,12 +9,20 @@ RSpec.describe 'All Pages' do
         
         visit "/teams"
         expect(page).to have_link('Players Index', href: '/players')
+        click_link('Players Index')
+        expect(current_path).to eq('/players')
         visit "/teams/#{team_1.id}"
         expect(page).to have_link('Players Index', href: '/players')
+        click_link('Players Index')
+        expect(current_path).to eq('/players')
         visit "/teams/#{team_1.id}/players"
         expect(page).to have_link('Players Index', href: '/players')
+        click_link('Players Index')
+        expect(current_path).to eq('/players')
         visit "/players"
         expect(page).to have_link('Players Index', href: '/players')
+        click_link('Players Index')
+        expect(current_path).to eq('/players')
         visit "/players/#{player1.id}"
         expect(page).to have_link('Players Index', href: '/players')
       end
@@ -25,14 +33,24 @@ RSpec.describe 'All Pages' do
         
         visit "/teams"
         expect(page).to have_link('Teams Index', href: '/teams')
+        click_link('Teams Index')
+        expect(current_path).to eq('/teams')
         visit "/teams/#{team_1.id}"
         expect(page).to have_link('Teams Index', href: '/teams')
+        click_link('Teams Index')
+        expect(current_path).to eq('/teams')
         visit "/teams/#{team_1.id}/players"
         expect(page).to have_link('Teams Index', href: '/teams')
+        click_link('Teams Index')
+        expect(current_path).to eq('/teams')
         visit "/players"
         expect(page).to have_link('Teams Index', href: '/teams')
+        click_link('Teams Index')
+        expect(current_path).to eq('/teams')
         visit "/players/#{player1.id}"
         expect(page).to have_link('Teams Index', href: '/teams')
+        click_link('Teams Index')
+        expect(current_path).to eq('/teams')
       end
     end
   end
