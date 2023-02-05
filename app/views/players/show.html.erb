@@ -2,3 +2,4 @@
 <p>Jersey Number: <%= @player.jersey_number %><p>
 <p>Retired: <%= @player.retired %><p>
 <p>Team Name: <%= @player.team.city + ' ' + @player.team.name %><p>
+<p><%= link_to "Update Player", "/players/#{@player.id}/edit" %><p> 
