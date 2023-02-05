@@ -78,7 +78,8 @@ RSpec.describe 'the teams index page', type: :feature do
 
       it "Next to every parent, I see a link to edit that parent's info" do
         visit '/teams'
-
+        
+        expect(page).to have_content("Update #{@team_1.name}")
         expect(page).to have_link("Update #{@team_1.name}", href: "/teams/#{@team_1.id}/edit")
       end
 
