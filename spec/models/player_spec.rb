@@ -14,9 +14,9 @@ RSpec.describe Player, type: :model do
       @player4 = Player.create!(name: "Bobby Orr", jersey_number: 4, retired: true, team: @team_1)
     end
 
-    describe 'active_player' do
+    describe 'active_players' do
       it 'only shows `true` Records' do
-        expect(Player.active_player).to eq([@player1])
+        expect(Player.active_players).to eq([@player1])
       end
     end
   end
