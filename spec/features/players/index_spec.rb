@@ -44,6 +44,22 @@ RSpec.describe 'the players index page', type: :feature do
         expect(page).to_not have_content(@player3.retired)
         expect(page).to_not have_content(@player4.retired)
       end
+
+      it " Next to every child, I see a link to edit that child's info" do
+        visit '/players'
+
+        expect(page).to have_content("Update #{@player1.name}")
+        expect(page).to have_link("Update #{@player1.name}", href: "/players/#{@player1.id}/edit")
+      end
+
+      it "When I click the link
+      I should be taken to that `child_table_name` edit page where I can update its information." do 
+        visit '/players'
+        click_link("Update #{@player1.name}")
+
+        expect(current_path).to eq("/players/#{@player1.id}/edit")
+        expect(page).to_not have_content(@player3)
+      end
     end
   end
 end
