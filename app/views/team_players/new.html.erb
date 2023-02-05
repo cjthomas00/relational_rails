@@ -1,7 +1,7 @@
 <%= form_with url: "/teams/#{@team.id}/players", method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.label :jersey_number %>
+  <%= form.label :jersey_number, "Jersey Number" %>
   <%= form.text_field :jersey_number %>
   <%= form.label :retired%>
   <%= form.check_box :retired %>
