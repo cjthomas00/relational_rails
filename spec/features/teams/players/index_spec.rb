@@ -1,10 +1,3 @@
-# User Story 5, Parent Children Index 
-
-# As a visitor
-# When I visit '/parents/:parent_id/child_table_name'
-# Then I see each Child that is associated with that Parent with each Child's attributes
-# (data from each column that is on the child table)
-
 require 'rails_helper'
 
 RSpec.describe 'Teams players index', type: :feature do
@@ -46,7 +39,6 @@ RSpec.describe 'Teams players index', type: :feature do
       Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
       a new child object/row is created for that parent,
       and I am redirected to the Parent Childs Index page where I can see the new child listed" do
-
         visit "/teams/#{@team.id}/players/new"
 
         fill_in('name', with: 'Cale Makar') 
@@ -56,6 +48,12 @@ RSpec.describe 'Teams players index', type: :feature do
 
         expect(current_path).to eq("/teams/#{@team.id}/players")
         expect(page).to have_content('Cale Makar')
+      end
+
+      it 'Then I see a link to sort children in alphabetical order' do
+        visit "/teams/#{@team.id}/players"
+
+        expect(page).to have_link('Sort in Alphabetical Order', href:"/teams/#{@team.id}/players?alphabetical")
       end
     end
   end
