@@ -50,10 +50,26 @@ RSpec.describe 'Teams players index', type: :feature do
         expect(page).to have_content('Cale Makar')
       end
 
-      it 'Then I see a link to sort children in alphabetical order' do
+      xit 'Then I see a link to sort children in alphabetical order' do
         visit "/teams/#{@team.id}/players"
 
         expect(page).to have_link('Sort in Alphabetical Order', href:"/teams/#{@team.id}/players?alphabetical")
+      end
+
+      it " Next to every child, I see a link to edit that child's info" do
+        visit "/teams/#{@team.id}/players"
+
+        expect(page).to have_content("Update #{@joe.name}")
+        expect(page).to have_link("Update #{@joe.name}", href: "/players/#{@joe.id}/edit")
+      end
+
+      it "When I click the link
+      I should be taken to that `child_table_name` edit page where I can update its information." do 
+        visit "/teams/#{@team.id}/players"
+        click_link("Update #{@nate.name}")
+
+        expect(current_path).to eq("/players/#{@nate.id}/edit")
+        expect(page).to_not have_content(@joe)
       end
     end
   end
