@@ -1,7 +1,12 @@
 class TeamPlayersController < ApplicationController
   def index
-    @team = Team.find(params[:team_id])
-    @players = @team.players
+    if params[:alphabetize] == "true"
+      @team = Team.find(params[:team_id])
+      @players = Player.where(team_id: @team[:id]).order(:name)
+    else
+      @team = Team.find(params[:team_id])
+      @players = @team.players
+    end
   end
 
   def new
