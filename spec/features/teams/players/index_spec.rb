@@ -6,6 +6,7 @@ RSpec.describe 'Teams players index', type: :feature do
       @team = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
       @joe = @team.players.create!(name: "Joe Sakic", jersey_number: 19, retired: true)
       @nate = @team.players.create!(name: "Nathan MacKinnon", jersey_number: 29, retired: false)
+      @artturi = @team.players.create!(name: "Artturi Lehkonen", jersey_number: 29, retired: false)
     end
 
     describe 'When I visit /team/:team_id/players' do
@@ -50,26 +51,21 @@ RSpec.describe 'Teams players index', type: :feature do
         expect(page).to have_content('Cale Makar')
       end
 
-      xit 'Then I see a link to sort children in alphabetical order' do
+      it 'Then I see a link to sort children in alphabetical order' do
         visit "/teams/#{@team.id}/players"
 
-        expect(page).to have_link('Sort in Alphabetical Order', href:"/teams/#{@team.id}/players?alphabetical")
+        expect(page).to have_link('Sort Alphabetically', href:"/teams/#{@team.id}/players?alphabetize=true")
       end
 
-      it " Next to every child, I see a link to edit that child's info" do
+      it "When I click on the link
+      I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order" do
         visit "/teams/#{@team.id}/players"
+        click_link("Sort Alphabetically")
 
-        expect(page).to have_content("Update #{@joe.name}")
-        expect(page).to have_link("Update #{@joe.name}", href: "/players/#{@joe.id}/edit")
-      end
-
-      it "When I click the link
-      I should be taken to that `child_table_name` edit page where I can update its information." do 
-        visit "/teams/#{@team.id}/players"
-        click_link("Update #{@nate.name}")
-
-        expect(current_path).to eq("/players/#{@nate.id}/edit")
-        expect(page).to_not have_content(@joe)
+        expect(@artturi.name).to appear_before(@joe.name)
+        expect(@joe.name).to appear_before(@nate.name)
+        expect(@artturi.name).to appear_before(@nate.name)
+        expect(current_path).to eq("/teams/#{@team.id}/players")
       end
     end
   end
