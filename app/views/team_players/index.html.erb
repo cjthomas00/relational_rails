@@ -4,7 +4,7 @@
   <p>Jersey Number: <%= player.jersey_number %><p>
   <p>Retired?: <%= player.retired %><p>
 <% end %> 
-
+<br>
 <%= link_to "Create Player", "/teams/#{@team.id}/players/new" %>
 <br>
 <%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?alphabetize=true" %>
