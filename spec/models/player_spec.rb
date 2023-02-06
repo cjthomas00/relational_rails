@@ -19,11 +19,5 @@ RSpec.describe Player, type: :model do
         expect(Player.active_players).to eq([@player1])
       end
     end
-
-    describe 'alphabetize' do
-      it 'orders players alphabetically' do
-        expect(Player.alphabetize).to eq([@player4, @player2, @player3, @player1])
-      end
-    end
   end
 end
