@@ -3,5 +3,5 @@
   <h3><%= player.name %>  <%= link_to "Update #{player.name}", "/players/#{player.id}/edit" %></h3>
   <p>Jersey Number: <%= player.jersey_number %><p>
   <p>Retired?: <%= player.retired %><p>
-  <p>Team: <%= player.team.name %><p>
+  <p>Team: <%= player.team.city %>  <%=player.team.name %><p>
 <% end %> 
