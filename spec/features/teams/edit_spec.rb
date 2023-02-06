@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Teams Index Page' do
+RSpec.describe 'Team Update' do
   describe 'As a visitor' do
     before :each do 
       @team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
@@ -23,5 +23,7 @@ RSpec.describe 'Teams Index Page' do
         expect(current_path).to eq("/teams/#{@team_1.id}/edit")
       end
     end
+
+    describe 'When I visit a parent show page' do
   end
 end
