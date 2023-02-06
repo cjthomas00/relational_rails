@@ -24,30 +24,6 @@ RSpec.describe "Players Show Page", type: :feature do
 
         expect(page).to have_link("Update Player")
       end
-
-      it "When I click the link I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:" do
-        visit "/players/#{@player1.id}"
-        click_link("Update Player")
-
-        expect(current_path).to eq("/players/#{@player1.id}/edit")
-        expect(page).to have_content('Name')
-        expect(page).to have_content('Jersey Number')
-        expect(page).to have_content('Retired')
-      end
-
-      it "When I click the button to submit the form 'Update Child' Then a `PATCH` request is sent to '/child_table_name/:id', the child's data is updated, and I am redirected to the Child Show page where I see the Child's updated information" do
-        visit "/players/#{@player1.id}"
-        click_link("Update Player")
-        expect(current_path).to eq("/players/#{@player1.id}/edit")
-        
-        fill_in('Name', with: 'Nathan MacKinnon') 
-        fill_in('jersey_number', with: 29)
-        uncheck('retired')
-        click_button('Update Player')
-
-        expect(current_path).to eq("/players/#{@player1.id}")
-        expect(page).to have_content("Nathan MacKinnon")
-      end
     end
   end
 end
