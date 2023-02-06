@@ -1,10 +1,3 @@
-# User Story 5, Parent Children Index 
-
-# As a visitor
-# When I visit '/parents/:parent_id/child_table_name'
-# Then I see each Child that is associated with that Parent with each Child's attributes
-# (data from each column that is on the child table)
-
 require 'rails_helper'
 
 RSpec.describe 'Teams players index', type: :feature do
@@ -13,6 +6,7 @@ RSpec.describe 'Teams players index', type: :feature do
       @team = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
       @joe = @team.players.create!(name: "Joe Sakic", jersey_number: 19, retired: true)
       @nate = @team.players.create!(name: "Nathan MacKinnon", jersey_number: 29, retired: false)
+      @artturi = @team.players.create!(name: "Artturi Lehkonen", jersey_number: 29, retired: false)
     end
 
     describe 'When I visit /team/:team_id/players' do
@@ -46,7 +40,6 @@ RSpec.describe 'Teams players index', type: :feature do
       Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
       a new child object/row is created for that parent,
       and I am redirected to the Parent Childs Index page where I can see the new child listed" do
-
         visit "/teams/#{@team.id}/players/new"
 
         fill_in('name', with: 'Cale Makar') 
@@ -56,6 +49,23 @@ RSpec.describe 'Teams players index', type: :feature do
 
         expect(current_path).to eq("/teams/#{@team.id}/players")
         expect(page).to have_content('Cale Makar')
+      end
+
+      it 'Then I see a link to sort children in alphabetical order' do
+        visit "/teams/#{@team.id}/players"
+
+        expect(page).to have_link('Sort Alphabetically', href:"/teams/#{@team.id}/players?alphabetize=true")
+      end
+
+      it "When I click on the link
+      I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order" do
+        visit "/teams/#{@team.id}/players"
+        click_link("Sort Alphabetically")
+
+        expect(@artturi.name).to appear_before(@joe.name)
+        expect(@joe.name).to appear_before(@nate.name)
+        expect(@artturi.name).to appear_before(@nate.name)
+        expect(current_path).to eq("/teams/#{@team.id}/players")
       end
     end
   end
