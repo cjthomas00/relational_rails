@@ -23,7 +23,5 @@ RSpec.describe 'Team Update' do
         expect(current_path).to eq("/teams/#{@team_1.id}/edit")
       end
     end
-
-    describe 'When I visit a parent show page' do
   end
 end

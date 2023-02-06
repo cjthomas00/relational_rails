@@ -4,9 +4,9 @@ RSpec.describe 'the teams index page', type: :feature do
   describe "As a visitor" do
     before :each do 
       @team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
-      #sleep(1)
+      sleep(1)
       @team_2 = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
-      # sleep(1)
+      sleep(1)
       @team_3 = Team.create!({name: 'Wild', city: 'Minnesota', original_six_team: false, number_of_stanley_cups: 0})
     end
     describe "when I visit '/teams'" do
