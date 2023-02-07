@@ -5,7 +5,7 @@ RSpec.describe "Players Show Page", type: :feature do
    before :each do
     @team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
     @team_2 = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
-    @player1 = Player.create!(name: "Nathan MacKinno", jersey_number: 29, retired: false, team: @team_2)
+    @player1 = Player.create!(name: "Nathan MacKinnon", jersey_number: 29, retired: false, team: @team_2)
     @player2 = Player.create!(name: "Brad Marchand", jersey_number: 63, retired: false, team: @team_1)
    end
     describe "When I visit '/players/:id'" do

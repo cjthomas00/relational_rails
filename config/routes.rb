@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get '/players/:id', to: 'players#show'
   get '/players/:id/edit', to: 'players#edit'
   patch '/players/:id', to: 'players#update'
+  get '/players/:id/delete', to: 'players#destroy'
 end

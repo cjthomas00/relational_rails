@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Teams Index Page' do
+RSpec.describe '#destroy' do
   describe 'As a visitor' do
     before :each do 
       @team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
