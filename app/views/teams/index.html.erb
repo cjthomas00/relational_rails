@@ -1,8 +1,9 @@
 <h2>Teams</h2>
-<h4><%= link_to "New Team", "/teams/new" %><h4>  
+<h4><%= link_to "New Team", "/teams/new" %><h4> 
+<br>
 <% @teams.each do |team| %>
   <h3><%= team.name %> // <%= link_to "Update #{team.name}", "/teams/#{team.id}/edit" %></h3>
   <p>Created At: <%= ' ' + team.created_at.to_s %></p>
   <%= link_to "Delete #{team.name}", "/teams/#{team.id}/delete"%>
-  <br>
+  <br><br>
   <% end %> 
