@@ -5,3 +5,5 @@
 <p><%= link_to "Players", "/teams/#{@team.id}/players" %>
 : <%= @team.player_count %><p>
 <p><%= link_to "Update Team", "/teams/#{@team.id}/edit" %><p> 
+<br>
+<p><%= link_to "Delete #{@team.name}", "/teams/#{@team.id}/delete"%><p> 
