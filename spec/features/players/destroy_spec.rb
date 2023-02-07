@@ -47,7 +47,7 @@ RSpec.describe '#destroy' do
       expect(current_path).to eq('/players')
       expect(page).to_not have_content(@player2.name)
       expect(page).to have_content(@player1.name)
+      end
     end
-  end
   end
 end
