@@ -3,3 +3,5 @@
 <p>Retired: <%= @player.retired %><p>
 <p>Team Name: <%= @player.team.city + ' ' + @player.team.name %><p>
 <p><%= link_to "Update Player", "/players/#{@player.id}/edit" %><p> 
+<br>
+<p><%= link_to "Delete #{@player.name}", "/players/#{@player.id}/delete"%><p> 
