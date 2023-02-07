@@ -6,7 +6,7 @@ RSpec.describe 'Edit Player', type: :feature do
       @team_1 = Team.create!({name: 'Bruins', city: 'Boston', original_six_team: true, number_of_stanley_cups: 6})
       @team_2 = Team.create!({name: 'Avalanche', city: 'Colorado', original_six_team: false, number_of_stanley_cups: 3})
   
-      @player1 = Player.create!(name: "Nathan MacKinnon", jersey_number: 29, retired: false, team: @team_2)
+      @player1 = Player.create!(name: "Nathan MacKinnnn", jersey_number: 29, retired: false, team: @team_2)
       @player2 = Player.create!(name: "Brad Marchand", jersey_number: 63, retired: false, team: @team_1)
       @player3 = Player.create!(name: "Joe Sakic", jersey_number: 19, retired: true, team: @team_2)
       @player4 = Player.create!(name: "Ray Bourque", jersey_number: 77, retired: true, team: @team_1)
