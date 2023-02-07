@@ -21,14 +21,14 @@ RSpec.describe 'Teams players index', type: :feature do
         expect(page).to have_content(@nate.retired)
       end
       
-      it 'Then I see a link to sort children in alphabetical order' do
+      it 'Then I see a link to sort players in alphabetical order' do
         visit "/teams/#{@team.id}/players"
 
         expect(page).to have_link('Sort Alphabetically', href:"/teams/#{@team.id}/players?alphabetize=true")
       end
 
       it "When I click on the link
-      I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order" do
+      I'm taken back to the team's players Index Page where I see all of the team's players in alphabetical order" do
         visit "/teams/#{@team.id}/players"
         click_link("Sort Alphabetically")
 
@@ -36,6 +36,13 @@ RSpec.describe 'Teams players index', type: :feature do
         expect(@joe.name).to appear_before(@nate.name)
         expect(@artturi.name).to appear_before(@nate.name)
         expect(current_path).to eq("/teams/#{@team.id}/players")
+      end
+
+      it "Next to every player, I see a link to delete that player" do
+        visit "/teams/#{@team.id}/players"
+        expect(page).to have_link("Delete #{@joe.name}")
+        expect(page).to have_link("Delete #{@artturi.name}")
+        expect(page).to have_link("Delete #{@nate.name}")
       end
     end
   end

@@ -44,6 +44,13 @@ RSpec.describe 'the players index page', type: :feature do
         expect(page).to_not have_content(@player3.retired)
         expect(page).to_not have_content(@player4.retired)
       end
+
+      it "Next to every player, I see a link to delete that player" do
+        visit '/players'
+
+        expect(page).to have_link("Delete #{@player1.name}")
+        expect(page).to have_link("Delete #{@player2.name}")
+      end
     end
   end
 end
