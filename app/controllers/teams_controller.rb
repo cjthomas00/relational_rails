@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = Team.all.order_teams
   end
 
   def show
@@ -25,6 +25,14 @@ class TeamsController < ApplicationController
     team.update(team_params)
     team.save
     redirect_to "/teams/#{team.id}"
+  end
+
+  def destroy
+    team = Team.find(params[:id])
+    team.players.destroy
+    team.destroy
+
+    redirect_to '/teams'
   end
 
 
