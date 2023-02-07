@@ -33,6 +33,14 @@ RSpec.describe 'the teams index page', type: :feature do
         expect(page).to have_content(@team_2.created_at)
         expect(page).to have_content(@team_3.created_at)
       end
+
+      it 'Next to every parent, I see a link to delete that parent' do
+        visit '/teams'
+
+        expect(page).to have_link("Delete #{@team_1.name}")
+        expect(page).to have_link("Delete #{@team_2.name}")
+        expect(page).to have_link("Delete #{@team_3.name}")
+      end
     end
   end
 end
