@@ -1,7 +1,10 @@
 <h2>Active Players</h2>
+<br>
 <% @players.each do |player| %>
   <h4><%= player.name %> // <%= link_to "Update #{player.name}", "/players/#{player.id}/edit" %></h4>
   <p>Jersey Number: <%= player.jersey_number %><p>
   <p>Retired?: <%= player.retired %><p>
   <p>Team: <%= player.team.city %>  <%=player.team.name %><p>
+  <p><%= link_to "Delete #{player.name}", "/players/#{player.id}/delete"%><p> 
+  <br>
 <% end %> 
