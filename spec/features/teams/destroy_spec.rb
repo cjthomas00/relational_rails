@@ -34,5 +34,20 @@ RSpec.describe '#destroy' do
         expect(page).to_not have_content(@player5.name)
       end
     end
+
+    describe "When I visit the parent index page" do
+      it "When I click the link
+      I am returned to the Parent Index Page where I no longer see that parent" do
+        visit '/teams'
+        click_link("Delete #{@team_2.name}")
+
+        expect(current_path).to eq("/teams")
+        expect(page).to_not have_content(@team_2.name)
+
+        visit "/players"
+        expect(page).to_not have_content(@player1.name)
+        expect(page).to_not have_content(@player2.name)
+      end
+    end
   end
 end
