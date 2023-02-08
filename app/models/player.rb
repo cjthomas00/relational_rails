@@ -5,7 +5,11 @@ class Player < ApplicationRecord
     self.all.where(retired: false)
   end
 
-  def self.filter_jersey(num)
-    self.where("jersey_number > #{num}")
+  def self.filter_jersey(team_id, num)
+    Player.where(team_id: team_id).where("jersey_number > #{num}")
+  end
+
+  def self.alpha(team_id)
+    Player.where(team_id: team_id).order(:name)
   end
 end
