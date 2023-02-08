@@ -22,7 +22,13 @@ RSpec.describe Player, type: :model do
 
     describe 'filter_jersey' do
       it 'shows players with higher jersey number than others' do
-        expect(Player.filter_jersey(18)).to eq([@player1, @player2])
+        expect(Player.filter_jersey(@team_2.id, 18)).to eq([@player1, @player2])
+      end
+    end
+
+    describe 'alpha' do
+      it 'sorts players alphabetically by name' do
+        expect(Player.alpha(@team_2.id)).to eq([@player2, @player1])
       end
     end
   end

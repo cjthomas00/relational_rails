@@ -2,9 +2,9 @@ class TeamPlayersController < ApplicationController
   def index
     @team = Team.find(params[:team_id])
     if params[:alphabetize] == "true"
-      @players = Player.where(team_id: @team[:id]).order(:name)
+      @players = Player.alpha(@team.id)
     elsif params[:jersey_number].present?
-      @players = Player.where(team_id: @team[:id]).filter_jersey(params[:jersey_number])
+      @players = Player.filter_jersey(@team.id, params[:jersey_number])
     else
       @players = @team.players
     end
