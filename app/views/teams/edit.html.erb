@@ -1,12 +1,12 @@
 <%= form_with url: "/teams/#{@team.id}", method: :patch, local: true do |form| %>
 <%= form.label :name %>
-<%= form.text_field :name %>
+<%= form.text_field :name, value: @team.name %>
 <%= form.label :city %>
-<%= form.text_field :city %>
+<%= form.text_field :city, value: @team.city %>
 <%= form.label :original_six_team%>
-<%= form.check_box :original_six_team %>
+<%= form.check_box :original_six_team, value: @team.original_six_team %>
 <%= form.label :number_of_stanley_cups, "Stanley Cups"%>
-<%= form.text_field :number_of_stanley_cups %>
+<%= form.text_field :number_of_stanley_cups, value: @team.number_of_stanley_cups %>
 
   <%= form.submit "Update Team" %>
 <% end %>

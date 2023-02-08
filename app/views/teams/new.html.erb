@@ -1,12 +1,12 @@
 <%= form_with url: '/teams', method: :post, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, required: true %>
   <%= form.label :city %>
-  <%= form.text_field :city %>
+  <%= form.text_field :city, required: true%>
   <%= form.label :original_six_team%>
   <%= form.check_box :original_six_team %>
   <%= form.label :number_of_stanley_cups, "Stanley Cups"%>
-  <%= form.text_field :number_of_stanley_cups %>
+  <%= form.text_field :number_of_stanley_cups, required: true %>
 
 <%= form.submit "Create Team" %>
 <% end %>

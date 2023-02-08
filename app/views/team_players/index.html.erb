@@ -1,4 +1,9 @@
 <h2><%="#{@team.name}"%> Players </h2>
+<%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?alphabetize=true" %>
+<br>
+<br>
+<%= link_to "Create Player", "/teams/#{@team.id}/players/new" %>
+
 
 <% @players.each do |player| %>
   <h3><%= player.name %> // <%= link_to "Update #{player.name}", "/players/#{player.id}/edit" %></h3>
@@ -6,9 +11,11 @@
   <p>Retired?: <%= player.retired %><p>
   <p><%= link_to "Delete #{player.name}", "/players/#{player.id}/delete"%><p>
   <br>
-<% end %> 
-<br>
-<%= link_to "Create Player", "/teams/#{@team.id}/players/new" %>
-<br>
-<%= link_to "Sort Alphabetically", "/teams/#{@team.id}/players?alphabetize=true" %>
-<br>
+  <% end %>   
+
+  <%= form_with url: "/teams/#{@team.id}/players", method: :get, local: true do |form| %>
+  <%= form.label :jersey_number, "Search by Jersey Number" %>
+  <%= form.text_field :jersey_number, required: true %>
+  <%= form.submit "Only return players with a higher jersey number" %>
+  <% end %>
+  
