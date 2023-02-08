@@ -19,5 +19,11 @@ RSpec.describe Player, type: :model do
         expect(Player.active_players).to eq([@player1])
       end
     end
+
+    describe 'filter_jersey' do
+      it 'shows players with higher jersey number than others' do
+        expect(Player.filter_jersey(18)).to eq([@player1, @player2])
+      end
+    end
   end
 end
